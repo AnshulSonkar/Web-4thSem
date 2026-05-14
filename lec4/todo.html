@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 5 - Input Event & Todo List</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            background-color: #f2f2f2;
+            padding: 30px;
+        }
+
+        h1{
+            color: darkblue;
+        }
+
+        .container{
+            width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        input{
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button{
+            padding: 10px 15px;
+            border: none;
+            background-color: darkblue;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        li{
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .deleteBtn{
+            background-color: red;
+            margin-left: 10px;
+        }
+
+        #liveText{
+            color: green;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Lecture 5 - DOM Practice</h1>
+
+        <!-- ================================= -->
+        <!-- INPUT EVENT -->
+        <!-- ================================= -->
+
+        <h2>Input Event Example</h2>
+
+        <input type="text" id="nameInput" placeholder="Enter your name">
+
+        <p id="liveText">
+            Typing will appear here...
+        </p>
+
+
+        <hr>
+
+
+        <!-- ================================= -->
+        <!-- TODO LIST -->
+        <!-- ================================= -->
+
+        <h2>Todo List</h2>
+
+        <input type="text" id="todoInput" placeholder="Enter Todo">
+
+        <button onclick="addTodo()">
+            Add
+        </button>
+
+        <ul id="todoList">
+
+        </ul>
+
+    </div>
+
+
+    <script>
+
+        // =========================================
+        // 1. INPUT EVENT
+        // =========================================
+
+        let nameInput = document.getElementById("nameInput");
+
+        let liveText = document.getElementById("liveText");
+
+
+        // input event
+        nameInput.addEventListener("input", function(){
+
+            liveText.innerText = nameInput.value;
+
+        });
+
+
+
+        // =========================================
+        // 2. TODO LIST
+        // =========================================
+
+        let todoInput = document.getElementById("todoInput");
+
+        let todoList = document.getElementById("todoList");
+
+
+        function addTodo(){
+
+            // input value
+            let task = todoInput.value;
+
+            // empty check
+            if(task == ""){
+                alert("Please enter task");
+                return;
+            }
+
+            // create li
+            let li = document.createElement("li");
+
+            li.innerText = task;
+
+
+            // create delete button
+            let deleteBtn = document.createElement("button");
+
+            deleteBtn.innerText = "Delete";
+
+            deleteBtn.classList.add("deleteBtn");
+
+
+            // delete event
+            deleteBtn.onclick = function(){
+
+                li.remove();
+
+            }
+
+
+            // append button inside li
+            li.appendChild(deleteBtn);
+
+            // append li inside ul
+            todoList.appendChild(li);
+
+            // clear input
+            todoInput.value = "";
+
+        }
+
+
+
+        // =========================================
+        // 3. KEYBOARD EVENT
+        // Press Enter to Add Todo
+        // =========================================
+
+        todoInput.addEventListener("keypress", function(event){
+
+            if(event.key === "Enter"){
+
+                addTodo();
+
+            }
+
+        });
+
+
+
+        // =========================================
+        // 4. FOCUS EVENT
+        // =========================================
+
+        todoInput.addEventListener("focus", function(){
+
+            todoInput.style.backgroundColor = "#dff9fb";
+
+        });
+
+
+
+        // =========================================
+        // 5. BLUR EVENT
+        // =========================================
+
+        todoInput.addEventListener("blur", function(){
+
+            todoInput.style.backgroundColor = "white";
+
+        });
+
+
+
+        // =========================================
+        // END OF LECTURE 5
+        // =========================================
+
+    </script>
+
+</body>
+</html>
