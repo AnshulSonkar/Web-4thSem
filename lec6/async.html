@@ -1,0 +1,153 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2> </h2>
+    <h1></h1>
+   <!-- // async programminggggggg -->
+
+<script>
+    // function step1(){
+    //     return new Promise((res,rej)=>{
+    //         setTimeout(()=>{
+    //                  console.log("seleteddd");
+    //                  res()         
+    //         },5000)
+
+    //     }) 
+    // }
+
+    // function step2(){
+    //     return new Promise((res,rej)=>{
+    //         setTimeout(()=>{
+    //                  console.log("captionssss");
+    //                  res()
+                     
+    //         },4000)
+
+    //     }) 
+    // }
+
+
+    //  async function call(){
+    //      await   step1()
+    //      await    step2()
+    // }
+    // call()
+
+
+
+    // step1().then(()=>{
+    //     return step2().then(()=>{
+
+    //     })
+    // })
+
+    // step1()
+    // step2()
+    //  function step3(fn){
+    //     setTimeout(()=>{
+    //         console.log("filterr added");
+    //         fn()
+        
+    //     },3000)
+    // }
+      
+    // function step4(){
+    //     setTimeout(() => {
+    //         console.log("posttt");   
+    //     }, 2000);
+    // }
+    // step1( function(){
+    //     step2()
+       
+    // }  )
+
+
+    // A -> B
+
+
+//     let  promise =new Promise((res,reject)=>{
+//         // res() 
+//         console.log("hello");
+        
+//         // reject()
+// })
+// console.log("hiii");
+
+// promise.then(()=>{
+//     console.log("donee");
+    
+// }).catch(()=>{
+//     console.log("errrrr");
+    
+// })
+
+// console.log(promise);
+//Api
+  let h2=   document.querySelector("h2")
+  let h1=   document.querySelector("h1")
+
+fetch("https://jsonplaceholder.typicode.com/photos").then((data)=>{
+    // console.log(data);
+    return data.json()
+}).then((val)=>{
+    console.log(val);
+
+    val.forEach((item)=>{
+
+        
+    h2.innerHTML += item.title + "<br><br>";
+ 
+})
+})
+.catch((err)=>{
+    console.log(errr);
+    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+    // setTimeout(()=>{
+    //     console.log("A");
+
+    // },0)
+    // setTimeout(()=>{
+    //     console.log("c");
+
+    // },1000)
+    // setTimeout(()=>{
+    //     console.log("D");
+
+    // },2000)
+  
+    // console.log("B");
+
+    
+</script>
+
+
+</body>
+</html>
